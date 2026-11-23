@@ -1,0 +1,1083 @@
+{
+ "$schema": "https://pin-node.com/schemas/pinnode-game.schema.json",
+ "manifestVersion": 1,
+ "ruleset": {
+  "id": "rpu-scorpion2022-rpu",
+  "title": "williams-scorpion",
+  "name": "Scorpion2022-RPU",
+  "version": "0.1.0",
+  "repo": "RetroPinUpgrade/Scorpion2022-RPU",
+  "scoringVersion": 1,
+  "platform": "williams-sys6"
+ },
+ "players": {
+  "max": 4
+ },
+ "achievements": [
+  {
+   "id": "skill-shot",
+   "index": 0,
+   "name": "Sharpshooter",
+   "desc": "Hit the lit top lane on the plunge to score the skill shot.",
+   "points": 5,
+   "kind": "event"
+  },
+  {
+   "id": "super-skill-shot",
+   "index": 1,
+   "name": "Super Sharpshooter",
+   "desc": "Score the super skill shot on a stand-up target during the skill shot.",
+   "points": 10,
+   "kind": "event"
+  },
+  {
+   "id": "weapons-ready",
+   "index": 2,
+   "name": "Armed and Dangerous",
+   "desc": "Bring a weapon to 100% in the weapons-building phase.",
+   "points": 10,
+   "kind": "event"
+  },
+  {
+   "id": "lock-ball",
+   "index": 3,
+   "name": "Lock It Up",
+   "desc": "Lock a ball in the blue or green saucer.",
+   "points": 10,
+   "kind": "event"
+  },
+  {
+   "id": "battle-start",
+   "index": 4,
+   "name": "Engage the Creature",
+   "desc": "Start Battle Multiball.",
+   "points": 25,
+   "kind": "event"
+  },
+  {
+   "id": "battle-won",
+   "index": 5,
+   "name": "Creature Captured",
+   "desc": "Win the battle against the creature.",
+   "points": 50,
+   "kind": "event"
+  },
+  {
+   "id": "defend-won",
+   "index": 6,
+   "name": "Defenses Held",
+   "desc": "Successfully defend against the hatchlings in Defend Multiball.",
+   "points": 25,
+   "kind": "event"
+  },
+  {
+   "id": "chase-won",
+   "index": 7,
+   "name": "Hot Pursuit",
+   "desc": "Complete the creature chase.",
+   "points": 25,
+   "kind": "event"
+  },
+  {
+   "id": "eggs-won",
+   "index": 8,
+   "name": "Egg Eradicator",
+   "desc": "Destroy the creature's eggs before they hatch.",
+   "points": 25,
+   "kind": "event"
+  },
+  {
+   "id": "victory",
+   "index": 9,
+   "name": "Victory Lap",
+   "desc": "Reach the Victory mode.",
+   "points": 50,
+   "kind": "event"
+  },
+  {
+   "id": "extra-ball",
+   "index": 10,
+   "name": "Bonus Round",
+   "desc": "Earn an extra ball.",
+   "points": 10,
+   "kind": "event"
+  }
+ ],
+ "stats": [],
+ "settings": [
+  {
+   "index": 0,
+   "id": "free-play",
+   "name": "Free play",
+   "group": "pricing",
+   "type": "bool",
+   "default": 0,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_FREEPLAY",
+    "variable": "FreePlayMode",
+    "eeprom": 101
+   }
+  },
+  {
+   "index": 1,
+   "id": "ball-save",
+   "name": "Ball save",
+   "group": "game",
+   "type": "enum",
+   "values": [
+    {
+     "v": 0,
+     "label": "0"
+    },
+    {
+     "v": 5,
+     "label": "5"
+    },
+    {
+     "v": 10,
+     "label": "10"
+    },
+    {
+     "v": 15,
+     "label": "15"
+    },
+    {
+     "v": 20,
+     "label": "20"
+    }
+   ],
+   "default": 15,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_BALL_SAVE",
+    "variable": "BallSaveNumSeconds",
+    "eeprom": 100
+   }
+  },
+  {
+   "index": 2,
+   "id": "sound-selector",
+   "name": "Sound selector",
+   "group": "sound",
+   "type": "int",
+   "min": 0,
+   "max": 9,
+   "default": 3,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_SOUND_SELECTOR",
+    "variable": "SoundSelector",
+    "eeprom": 102
+   }
+  },
+  {
+   "index": 3,
+   "id": "music-volume",
+   "name": "Music volume",
+   "group": "sound",
+   "type": "int",
+   "min": 0,
+   "max": 10,
+   "default": 10,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_MUSIC_VOLUME",
+    "variable": "MusicVolume",
+    "eeprom": 109
+   }
+  },
+  {
+   "index": 4,
+   "id": "sfx-volume",
+   "name": "Sound effects volume",
+   "group": "sound",
+   "type": "int",
+   "min": 0,
+   "max": 10,
+   "default": 10,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_SFX_VOLUME",
+    "variable": "SoundEffectsVolume",
+    "eeprom": 108
+   }
+  },
+  {
+   "index": 5,
+   "id": "callouts-volume",
+   "name": "Callouts volume",
+   "group": "sound",
+   "type": "int",
+   "min": 0,
+   "max": 10,
+   "default": 10,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_CALLOUTS_VOLUME",
+    "variable": "CalloutsVolume",
+    "eeprom": 111
+   }
+  },
+  {
+   "index": 6,
+   "id": "tournament-scoring",
+   "name": "Tournament scoring",
+   "group": "game",
+   "type": "bool",
+   "default": 0,
+   "tournamentMode": 1,
+   "difficulty": true,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_TOURNAMENT_SCORING",
+    "variable": "TournamentScoring",
+    "eeprom": 107
+   }
+  },
+  {
+   "index": 7,
+   "id": "tilt-warning",
+   "name": "Tilt warning",
+   "group": "game",
+   "type": "int",
+   "min": 0,
+   "max": 2,
+   "default": 2,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_TILT_WARNING",
+    "variable": "MaxTiltWarnings",
+    "eeprom": 104
+   }
+  },
+  {
+   "index": 8,
+   "id": "award-override",
+   "name": "Award override",
+   "group": "awards",
+   "type": "enum",
+   "values": [
+    {
+     "v": 99,
+     "label": "Game default"
+    },
+    {
+     "v": 0,
+     "label": "0"
+    },
+    {
+     "v": 1,
+     "label": "1"
+    },
+    {
+     "v": 2,
+     "label": "2"
+    },
+    {
+     "v": 3,
+     "label": "3"
+    },
+    {
+     "v": 4,
+     "label": "4"
+    },
+    {
+     "v": 5,
+     "label": "5"
+    },
+    {
+     "v": 6,
+     "label": "6"
+    },
+    {
+     "v": 7,
+     "label": "7"
+    }
+   ],
+   "default": 99,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_AWARD_OVERRIDE",
+    "variable": "ScoreAwardReplay",
+    "eeprom": 105
+   }
+  },
+  {
+   "index": 9,
+   "id": "balls-override",
+   "name": "Balls override",
+   "group": "game",
+   "type": "enum",
+   "values": [
+    {
+     "v": 3,
+     "label": "3"
+    },
+    {
+     "v": 5,
+     "label": "5"
+    },
+    {
+     "v": 99,
+     "label": "99"
+    }
+   ],
+   "default": 99,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_BALLS_OVERRIDE",
+    "variable": "BallsPerGame",
+    "eeprom": 106
+   }
+  },
+  {
+   "index": 10,
+   "id": "scrolling-scores",
+   "name": "Scrolling scores",
+   "group": "display",
+   "type": "bool",
+   "default": 1,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_SCROLLING_SCORES",
+    "variable": "ScrollingScores",
+    "eeprom": 110
+   }
+  },
+  {
+   "index": 11,
+   "id": "extra-ball-award",
+   "name": "Extra ball award",
+   "group": "awards",
+   "type": "score",
+   "min": 0,
+   "max": 99999990,
+   "step": 10,
+   "default": 20000,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_EXTRA_BALL_AWARD",
+    "variable": "ExtraBallValue",
+    "eeprom": 140
+   }
+  },
+  {
+   "index": 12,
+   "id": "special-award",
+   "name": "Special award",
+   "group": "awards",
+   "type": "score",
+   "min": 0,
+   "max": 99999990,
+   "step": 10,
+   "default": 40000,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_SPECIAL_AWARD",
+    "variable": "SpecialValue",
+    "eeprom": 144
+   }
+  },
+  {
+   "index": 13,
+   "id": "credit-reset-hold-time",
+   "name": "Credit reset hold time",
+   "group": "pricing",
+   "type": "enum",
+   "values": [
+    {
+     "v": 0,
+     "label": "0"
+    },
+    {
+     "v": 1,
+     "label": "1"
+    },
+    {
+     "v": 2,
+     "label": "2"
+    },
+    {
+     "v": 3,
+     "label": "3"
+    },
+    {
+     "v": 99,
+     "label": "99"
+    }
+   ],
+   "default": 1,
+   "source": {
+    "menuId": "MACHINE_STATE_ADJUST_CREDIT_RESET_HOLD_TIME",
+    "variable": "TimeRequiredToResetGame",
+    "eeprom": 118
+   }
+  },
+  {
+   "index": 14,
+   "id": "app-starts",
+   "name": "Starts from the app",
+   "group": "pricing",
+   "type": "enum",
+   "values": [
+    {
+     "v": 0,
+     "label": "Off"
+    },
+    {
+     "v": 1,
+     "label": "On"
+    }
+   ],
+   "default": 1,
+   "operatorOnly": true,
+   "liveSafe": true,
+   "source": {
+    "menuId": "PINNODE_ADJ_APP_STARTS",
+    "eeprom": 4080,
+    "variable": "PinNode_AppStartsOn()"
+   }
+  }
+ ],
+ "audits": [
+  {
+   "index": 0,
+   "id": "total-plays",
+   "name": "Total plays"
+  },
+  {
+   "index": 1,
+   "id": "chute-1-coins",
+   "name": "Chute 1 coins"
+  },
+  {
+   "index": 2,
+   "id": "chute-2-coins",
+   "name": "Chute 2 coins"
+  },
+  {
+   "index": 3,
+   "id": "chute-3-coins",
+   "name": "Chute 3 coins"
+  },
+  {
+   "index": 4,
+   "id": "total-replays",
+   "name": "Total replays"
+  },
+  {
+   "index": 5,
+   "id": "high-score-beaten",
+   "name": "High score beaten"
+  }
+ ],
+ "actions": [
+  {
+   "id": "lamp-test",
+   "name": "Lamp test",
+   "kind": "test",
+   "arg": {
+    "min": 0,
+    "max": 64,
+    "label": "Lamp (64 = all)"
+   },
+   "valueLabel": "Lamp",
+   "valueList": "lamps",
+   "index": 0
+  },
+  {
+   "id": "display-test",
+   "name": "Display test",
+   "kind": "test",
+   "arg": {
+    "min": 0,
+    "max": 7,
+    "label": "Digit (0 = all)"
+   },
+   "valueLabel": "Digit",
+   "index": 1
+  },
+  {
+   "id": "solenoid-test",
+   "name": "Coil test",
+   "kind": "test",
+   "arg": {
+    "min": 0,
+    "max": 31,
+    "label": "Coil, as numbered in the coin-door test "
+   },
+   "valueLabel": "Coil",
+   "index": 2
+  },
+  {
+   "id": "switch-test",
+   "name": "Switch test",
+   "kind": "test",
+   "valueLabel": "Closures",
+   "valueList": "switches",
+   "index": 3
+  },
+  {
+   "id": "clear-audits",
+   "name": "Clear all audits",
+   "kind": "oneshot",
+   "confirm": true,
+   "valueLabel": "Plays before",
+   "index": 4
+  },
+  {
+   "id": "enter-diagnostics",
+   "name": "Enter diagnostics",
+   "kind": "oneshot",
+   "local": true,
+   "diagnostics": "enter",
+   "index": 5
+  },
+  {
+   "id": "exit-diagnostics",
+   "name": "Exit diagnostics",
+   "kind": "oneshot",
+   "local": true,
+   "diagnostics": "exit",
+   "index": 6
+  }
+ ],
+ "lamps": [
+  {
+   "n": 0,
+   "name": "Shoot again"
+  },
+  {
+   "n": 1,
+   "name": "Double timer outlanes"
+  },
+  {
+   "n": 2,
+   "name": "5 drop lights outlanes"
+  },
+  {
+   "n": 3,
+   "name": "Right pop"
+  },
+  {
+   "n": 4,
+   "name": "Spinner and lower pop"
+  },
+  {
+   "n": 5,
+   "name": "Top pop"
+  },
+  {
+   "n": 6,
+   "name": "Left saucer"
+  },
+  {
+   "n": 7,
+   "name": "Right saucer"
+  },
+  {
+   "n": 8,
+   "name": "Left 1k"
+  },
+  {
+   "n": 9,
+   "name": "Left 2k"
+  },
+  {
+   "n": 10,
+   "name": "Left 3k"
+  },
+  {
+   "n": 11,
+   "name": "Left 4k"
+  },
+  {
+   "n": 12,
+   "name": "Left 5k"
+  },
+  {
+   "n": 13,
+   "name": "Left 6k"
+  },
+  {
+   "n": 14,
+   "name": "Left 7k"
+  },
+  {
+   "n": 15,
+   "name": "Left 8k"
+  },
+  {
+   "n": 16,
+   "name": "Left 9k"
+  },
+  {
+   "n": 17,
+   "name": "Left 10k"
+  },
+  {
+   "n": 18,
+   "name": "Right 1k"
+  },
+  {
+   "n": 19,
+   "name": "Right 2k"
+  },
+  {
+   "n": 20,
+   "name": "Right 3k"
+  },
+  {
+   "n": 21,
+   "name": "Right 4k"
+  },
+  {
+   "n": 22,
+   "name": "Right 5k"
+  },
+  {
+   "n": 23,
+   "name": "Right 6k"
+  },
+  {
+   "n": 24,
+   "name": "Animation steps"
+  },
+  {
+   "n": 25,
+   "name": "Right 8k"
+  },
+  {
+   "n": 26,
+   "name": "Right 9k"
+  },
+  {
+   "n": 27,
+   "name": "Right 10k"
+  },
+  {
+   "n": 28,
+   "name": "Collect double timer"
+  },
+  {
+   "n": 29,
+   "name": "Inlane special"
+  },
+  {
+   "n": 30,
+   "name": "Inlane 50k"
+  },
+  {
+   "n": 31,
+   "name": "Inlane extra ball"
+  },
+  {
+   "n": 32,
+   "name": "Bonus 2x"
+  },
+  {
+   "n": 33,
+   "name": "Bonus 3x"
+  },
+  {
+   "n": 34,
+   "name": "Bonus 5x"
+  },
+  {
+   "n": 35,
+   "name": "3 drops 10k"
+  },
+  {
+   "n": 36,
+   "name": "3 drops 20k"
+  },
+  {
+   "n": 37,
+   "name": "3 drops 30k"
+  },
+  {
+   "n": 38,
+   "name": "3 drops 50k"
+  },
+  {
+   "n": 39,
+   "name": "3 drops special"
+  },
+  {
+   "n": 40,
+   "name": "Head left timer"
+  },
+  {
+   "n": 41,
+   "name": "4 top lane"
+  },
+  {
+   "n": 42,
+   "name": "5 top lane"
+  },
+  {
+   "n": 43,
+   "name": "6 top lane"
+  },
+  {
+   "n": 44,
+   "name": "1 standup"
+  },
+  {
+   "n": 45,
+   "name": "2 standup"
+  },
+  {
+   "n": 46,
+   "name": "3 standup"
+  },
+  {
+   "n": 47,
+   "name": "Head ball in play 4"
+  },
+  {
+   "n": 48,
+   "name": "Head right timer"
+  },
+  {
+   "n": 49,
+   "name": "Head 1 player"
+  },
+  {
+   "n": 50,
+   "name": "Head 2 players"
+  },
+  {
+   "n": 51,
+   "name": "Head 3 players"
+  },
+  {
+   "n": 52,
+   "name": "Head 4 players"
+  },
+  {
+   "n": 53,
+   "name": "Head match"
+  },
+  {
+   "n": 54,
+   "name": "Head ball in play"
+  },
+  {
+   "n": 55,
+   "name": "Apron credits"
+  },
+  {
+   "n": 56,
+   "name": "Head player 1 up"
+  },
+  {
+   "n": 57,
+   "name": "Head player 2 up"
+  },
+  {
+   "n": 58,
+   "name": "Head player 3 up"
+  },
+  {
+   "n": 59,
+   "name": "Head player 4 up"
+  },
+  {
+   "n": 60,
+   "name": "Head tilt"
+  },
+  {
+   "n": 61,
+   "name": "Head game over"
+  },
+  {
+   "n": 62,
+   "name": "Head same player shoots again"
+  },
+  {
+   "n": 63,
+   "name": "Head high score"
+  }
+ ],
+ "switches": [
+  {
+   "n": 0,
+   "name": "Plumb tilt"
+  },
+  {
+   "n": 1,
+   "name": "Roll tilt"
+  },
+  {
+   "n": 2,
+   "name": "Credit reset"
+  },
+  {
+   "n": 3,
+   "name": "Coin 1"
+  },
+  {
+   "n": 4,
+   "name": "Coin 2"
+  },
+  {
+   "n": 5,
+   "name": "Coin 3"
+  },
+  {
+   "n": 6,
+   "name": "Slam"
+  },
+  {
+   "n": 7,
+   "name": "High score reset"
+  },
+  {
+   "n": 8,
+   "name": "Ball 1"
+  },
+  {
+   "n": 9,
+   "name": "Ball 2"
+  },
+  {
+   "n": 10,
+   "name": "Left saucer"
+  },
+  {
+   "n": 11,
+   "name": "Right saucer"
+  },
+  {
+   "n": 12,
+   "name": "Playfield tilt"
+  },
+  {
+   "n": 13,
+   "name": "Left outlane"
+  },
+  {
+   "n": 14,
+   "name": "Right outlane"
+  },
+  {
+   "n": 15,
+   "name": "Outhole"
+  },
+  {
+   "n": 16,
+   "name": "Right flipper"
+  },
+  {
+   "n": 17,
+   "name": "Left center inlane"
+  },
+  {
+   "n": 18,
+   "name": "Left inside inlane"
+  },
+  {
+   "n": 19,
+   "name": "Right inside inlane"
+  },
+  {
+   "n": 20,
+   "name": "Right center inlane"
+  },
+  {
+   "n": 21,
+   "name": "Right pop bumper"
+  },
+  {
+   "n": 22,
+   "name": "Lower pop bumper"
+  },
+  {
+   "n": 23,
+   "name": "Upper pop bumper"
+  },
+  {
+   "n": 24,
+   "name": "Left 3 drop 1"
+  },
+  {
+   "n": 25,
+   "name": "Left 3 drop 2"
+  },
+  {
+   "n": 26,
+   "name": "Left 3 drop 3"
+  },
+  {
+   "n": 27,
+   "name": "Right 3 drop 1"
+  },
+  {
+   "n": 28,
+   "name": "Right 3 drop 2"
+  },
+  {
+   "n": 29,
+   "name": "Right 3 drop 3"
+  },
+  {
+   "n": 30,
+   "name": "3 drops complete"
+  },
+  {
+   "n": 31,
+   "name": "Spinner"
+  },
+  {
+   "n": 32,
+   "name": "5 drop 1"
+  },
+  {
+   "n": 33,
+   "name": "5 drop 2"
+  },
+  {
+   "n": 34,
+   "name": "5 drop 3"
+  },
+  {
+   "n": 35,
+   "name": "5 drop 4"
+  },
+  {
+   "n": 36,
+   "name": "5 drop 5"
+  },
+  {
+   "n": 37,
+   "name": "5 drop complete"
+  },
+  {
+   "n": 38,
+   "name": "Left sling"
+  },
+  {
+   "n": 39,
+   "name": "Right sling"
+  },
+  {
+   "n": 40,
+   "name": "Left bullseye"
+  },
+  {
+   "n": 41,
+   "name": "Right bullseye"
+  },
+  {
+   "n": 42,
+   "name": "1 target"
+  },
+  {
+   "n": 43,
+   "name": "2 target"
+  },
+  {
+   "n": 44,
+   "name": "3 target"
+  },
+  {
+   "n": 45,
+   "name": "4 rollover"
+  },
+  {
+   "n": 46,
+   "name": "5 rollover"
+  },
+  {
+   "n": 47,
+   "name": "6 rollover"
+  },
+  {
+   "n": 48,
+   "name": "Right lane to top"
+  },
+  {
+   "n": 49,
+   "name": "Upper left 10"
+  },
+  {
+   "n": 50,
+   "name": "Left 3 drop 10"
+  },
+  {
+   "n": 51,
+   "name": "Right 3 drop 10"
+  },
+  {
+   "n": 52,
+   "name": "Center left 10"
+  },
+  {
+   "n": 53,
+   "name": "5 drop 10"
+  },
+  {
+   "n": 54,
+   "name": "Center right 10"
+  },
+  {
+   "n": 55,
+   "name": "Upper right 10"
+  },
+  {
+   "n": 57,
+   "name": "Lower right 10"
+  }
+ ],
+ "solenoids": [
+  {
+   "n": 0,
+   "name": "Outhole"
+  },
+  {
+   "n": 1,
+   "name": "5 drop left reset"
+  },
+  {
+   "n": 2,
+   "name": "5 drop right reset"
+  },
+  {
+   "n": 3,
+   "name": "3 drop left reset"
+  },
+  {
+   "n": 4,
+   "name": "3 drop right reset"
+  },
+  {
+   "n": 5,
+   "name": "Ball ramp thrower"
+  },
+  {
+   "n": 6,
+   "name": "Left saucer"
+  },
+  {
+   "n": 7,
+   "name": "Right saucer"
+  },
+  {
+   "n": 13,
+   "name": "Knocker"
+  },
+  {
+   "n": 14,
+   "name": "Gi relay"
+  },
+  {
+   "n": 16,
+   "name": "Bottom pop"
+  },
+  {
+   "n": 17,
+   "name": "Top pop"
+  },
+  {
+   "n": 18,
+   "name": "Right pop"
+  },
+  {
+   "n": 20,
+   "name": "Left sling"
+  },
+  {
+   "n": 21,
+   "name": "Right sling"
+  }
+ ]
+}
